@@ -30,7 +30,10 @@ for i in range(len(combos)):
 	answer = input(str(option_1) + " or " + str(option_2) + "? ").strip()
 	while answer not in items:
 		answer = input(str(option_1) + " or " + str(option_2) + "? ").strip()
-	scores[answer] = scores.get(answer, 0) + 1
+	if answer == option_1:
+		scores[answer] = scores.get(answer, 0) + (scores[option_2] + 1)
+	elif answer == option_2:
+		scores[answer] = scores.get(answer, 0) + (scores[option_1] + 1)
 
 scores = sorted(scores.items(), key=itemgetter(1), reverse=True)
 
